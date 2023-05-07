@@ -11,10 +11,12 @@
   background-color: black;
   color: white;
   box-sizing: border-box;
+  --primary: #16151a;
+  --secondary: #25a56a;
 }
 
 .mainbox {
-  height: calc(100vh - 32px);
+  min-height: calc(100vh - 32px);
 }
 
 input[type="text"]{
@@ -23,4 +25,23 @@ input[type="text"]{
 
 .progress {
   accent-color: #25a56a;
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--secondary) var(--primary);
+}
+
+/* Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  width: 15px;
+}
+
+*::-webkit-scrollbar-track {
+  background: var(--primary);
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: var(--secondary);
+  border: 3px solid var(--primary);
 }

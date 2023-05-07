@@ -26,7 +26,7 @@ console.log(playlists)
   return (
     <section className="flex flex-col justify-start items-start w-full h-full p-4 ">
      <h1 className='text-2xl text-left py-4'>Trending Playlists</h1>
-      <div className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-2 overflow-y-scroll scrollbar scrollbar-thumb-[#25a56a]/70 scrollbar-track-[#25a56a]/30 w-full'>
+      <div className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-2 w-full'>
       {playlists ? playlists?.map((p) => {
         return(
           <span>

@@ -19,9 +19,9 @@ const Songs = () => {
 console.log(songs)
 
   return (
-    <section className="flex flex-col justify-start items-start w-full h-full p-4 ">
+    <section className="flex flex-col justify-start items-start w-full md:h-full p-4 ">
      <h1 className='text-2xl text-left py-4'>Trending Songs</h1>
-      <div className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-2 overflow-y-scroll scrollbar scrollbar-thumb-[#25a56a]/70 scrollbar-track-[#25a56a]/30 w-full'>
+      <div className='grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-2 w-full'>
       {songs ? songs?.map((s) => {
         return(
           <Link to='/songdetails' onClick={() => dispatch(fetchData(s.url))} >

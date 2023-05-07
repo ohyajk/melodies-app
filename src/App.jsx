@@ -5,12 +5,14 @@ import Songs from "./pages/Songs"
 import Albums from "./pages/Albums"
 import Playlists from "./pages/Playlists"
 import SongDetail from "./pages/SongDetail"
+import Mobnav from "./components/Mobnav"
 
 function App() {
 
   return (
-    <main className="mainbox box-border flex items-start justify-start m-4 bg-[#16151a] rounded-3xl" >
+    <main className="mainbox box-border md:flex items-start justify-start m-4 bg-[#16151a] rounded-3xl " >
       <Navbar/>
+      <Mobnav/>
       <Routes>
         <Route path="/" element={<Home/>} />
         <Route path="/songs" element={<Songs/>} />
