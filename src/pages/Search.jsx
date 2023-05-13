@@ -1,7 +1,7 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { fetchSongs } from '../redux/SongDetailSlice'
+import { fetchQuerySong, fetchQueryAlbum } from '../api/fetcher'
 
 const Search = () => {
     const dispatch = useDispatch()
@@ -15,7 +15,7 @@ const Search = () => {
       <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-2 w-full mb-[50px]'>
       {searchData ? searchData.data.songs.results.map((s) => {
         return(
-          <Link to='/songdetails' onClick={() => dispatch(fetchSongs(s.url))} className='flex flex-col justify-center items-center' >
+          <Link to='/songDetails' onClick={() => dispatch(fetchQuerySong(s.url))} className='flex flex-col justify-center items-center' >
             <img className='h-[200px]' src={s.image[2].link} alt={s.name} />
             <span>{s.title}</span>
           </Link>
@@ -29,7 +29,7 @@ const Search = () => {
       <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-2 w-full mb-[50px]'>
       {searchData ? searchData.data.albums.results.map((s) => {
         return(
-          <Link to='/songdetails' onClick={() => dispatch(fetchSongs(s.url))} className='flex flex-col justify-center items-center' >
+          <Link to='/albumDetails' onClick={() => dispatch(fetchQueryAlbum(s.url))} className='flex flex-col justify-center items-center' >
             <img className='h-[200px]' src={s.image[2].link} alt={s.name} />
             <span>{s.title}</span>
           </Link>

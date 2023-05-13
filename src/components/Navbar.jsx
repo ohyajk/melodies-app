@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { useDispatch } from "react-redux"
-import {fetchSongQuery} from "../redux/Search"
 import { useNavigate } from "react-router-dom"
+import { fetchQuery } from "../api/fetcher"
 const Navbar = () => {
   const dispatch = useDispatch()
   const navigate = useNavigate()
@@ -9,12 +9,12 @@ const Navbar = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    dispatch(fetchSongQuery(query))
+    dispatch(fetchQuery(query))
     navigate('/search')
   }
 
   return (
-    <nav className="fixed gridd w-full border-b-2 border-myBorder bg-bgbg">
+    <nav className="fixed gridd w-full border-b-2 border-myBorder bg-bgbg z-10">
       {/* Logo */}
       <div className="flex justify-center items-center w-[250px] py-2">
         <img className="h-16" src="/logo.png" alt="Melodies-logo" />

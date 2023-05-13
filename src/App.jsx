@@ -4,22 +4,22 @@ import Navbar from "./components/Navbar"
 import Songs from "./pages/Songs"
 import Albums from "./pages/Albums"
 import Playlists from "./pages/Playlists"
-import SongDetail from "./pages/SongDetail"
 import Player from "./components/Player"
-import { fetchSongs } from "./redux/SongsFetchSlice"
 import { useEffect } from "react"
 import { useDispatch } from "react-redux"
-import { fetchAlbums } from "./redux/AlbumsFetchSlice"
 import Sidebar from "./components/Sidebar"
 import Search from "./pages/Search"
+import { fetchModules, fetchSongsPage } from "./api/fetcher"
+import AlbumDetail from "./pages/AlbumDetail"
+import SongDetail from "./pages/SongDetail"
 
 function App() {
 
   const dispatch = useDispatch()
 
   useEffect(() => {
-    dispatch(fetchSongs())
-    dispatch(fetchAlbums())
+    dispatch(fetchSongsPage())
+    dispatch(fetchModules())
   },[])
 
   return (
@@ -33,7 +33,8 @@ function App() {
         <Route path="songs" element={<Songs/>} />
         <Route path="albums" element={<Albums/>} />
         <Route path="playlists" element={<Playlists/>} />
-        <Route path="songdetails" element={<SongDetail/>} />
+        <Route path="songDetails" element={<SongDetail/>} />
+        <Route path="albumDetails" element={<AlbumDetail/>} />
         <Route path="search" element={<Search/>} />
       </Routes>
       <Player/>

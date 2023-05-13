@@ -1,15 +1,16 @@
 import { configureStore } from '@reduxjs/toolkit'
-
 import SongDetailSlice from './SongDetailSlice'
 import SongsFetchSlice from './SongsFetchSlice'
-import AlbumsFetchSlice from './AlbumsFetchSlice'
+import ModulesFetchSlice from './ModulesFetchSlice'
 import PlayerSlice from './PlayerSlice'
-import searchSlice from './Search'
+import searchSlice from './SearchSlice'
+import albumDetailSlice from './albumDetailSlice'
 
 const store = configureStore({ reducer: {
+    AlbumDetail : albumDetailSlice,
     SongDetail : SongDetailSlice,
     Songs : SongsFetchSlice,
-    Albums : AlbumsFetchSlice,
+    Modules : ModulesFetchSlice,
     Player : PlayerSlice,
     Search : searchSlice,
 } })

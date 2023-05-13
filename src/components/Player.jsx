@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { useSelector } from 'react-redux'
+import htmlEntitiesDecoder from 'html-entities-decoder'
 
 const Player = () => {
 
@@ -65,8 +66,8 @@ const Player = () => {
                 <div className='flex gap-4 px-2'>
                     <img className='h-[80px]' src={src.image[1].link} alt="" />
                     <span className='flex flex-col justify-center'>
-                        <h2 className='text-lg font-semibold'>{src.name}</h2>
-                        <h3 className='opacity-70 '>{src.primaryArtists.split(',').slice(0,2).join(',').replace(/&amp;/g, "&")}</h3>
+                        <h2 className='text-lg font-semibold'>{htmlEntitiesDecoder(src.name)}</h2>
+                        <h3 className='opacity-70 '>{htmlEntitiesDecoder(src.primaryArtists.split(',').slice(0,2).join(','))}</h3>
                     </span>
                 </div>
 

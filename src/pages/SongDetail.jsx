@@ -1,43 +1,39 @@
-import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { src } from '../redux/PlayerSlice';
+import htmlEntitiesDecoder from 'html-entities-decoder'
+import React from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { src } from '../redux/PlayerSlice'
 
 const SongDetail = () => {
+
   const dispatch = useDispatch()
-  const { data, isLoading, error } = useSelector((state) => state.SongDetail);
-
-  if (isLoading) {
-    return <span>Loading data...</span>;
-  }
-
-  if (error) {
-    return (
-      <span>
-        There is a problem sir... <br /> {error}
-      </span>
-    );
-  }
-
-  if (!data || !data.data || data.data.length === 0) {
-    return <span>No data available</span>;
-  }
-
-  const song = data.data[0];
+  const songData = useSelector((state) => state.SongDetail.data)
+  const song = songData?.data[0]
+  const currentSrc = useSelector(state => state.Player.data)
   console.log(song)
-  return (
-    <div className='flex flex-col justify-start items-center border-l-2 border-[#2a2a2a] pt-24 px-4 '>
-      <img className='h-[300px]' src={song.image[2].link} alt={song.name} />
-      <div className='flex flex-col gap-2 mt-4'>
-      <h1 className='text-xl font-bold'>Song : {song.name}</h1>
-      <h2 className='text-xl font-bold'>Album : {song.album.name}</h2>
-      <h2 className='text-xl font-bold'>Artist : {song.primaryArtists}</h2>
-      <h2 className='text-xl font-bold'>Release Date : {song.releaseDate}</h2>
-      <h2 className='text-xl font-bold'>Label : {song.label}</h2>
-      <button onClick={() => {dispatch(src(song))}} className='bg-[#25a56a] py-1'>Play</button>
-      </div>
 
-    </div>
-  );
-};
+  if (songData?.data[0]) {
+    return (
+      <section className="flex justify-center items-start w-full pt-24 px-4 border-l-2 border-[#2a2a2a]">
+        <span className='flex flex-col  p-2 bg-[#2a2a2a] gap-4 px-4 justify-between items-center'>
+          <div className='flex flex-col gap-4 items-center justify-start'>
+            <img className='h-[250px]' src={song.image[2].link} alt={song.name} />
+            <div className='flex flex-col justify-center'>
+              <h2 className='text-lg font-semibold'>{htmlEntitiesDecoder(song.name)}</h2>
+              <h3 className='opacity-70 '>{song.primaryArtists}</h3>
+            </div>
+          </div>
+          <div className='flex justify-start items-center gap-2'>
+            <button className='justify-self-end h-[50px] w-[50px] bg-myGreen rounded-full' onClick={() => dispatch(src(song))} ><i className={currentSrc == song ? "fa-sharp fa-solid fa-pause fa-xl" : "fa-sharp fa-solid fa-play fa-xl"}></i></button>
+            <button className='justify-self-end h-[50px] w-[50px] bg-red-500 rounded-full'  ><i class="fa-solid fa-heart fa-xl"></i></button>
+          </div>
+        </span>
+      </section>
+    )
+  } else {
+    return (
+      <span>No Data...</span>
+    )
+  }
+}
 
-export default SongDetail;
+export default SongDetail

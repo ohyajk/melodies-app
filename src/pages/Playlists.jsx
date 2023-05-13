@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux'
 
 const Playlists = () => {
 
-  const playlists = useSelector(state => state.Albums.data)
+  const playlists = useSelector(state => state.Modules.data)
 
 
   return (

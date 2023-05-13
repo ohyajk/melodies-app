@@ -1,9 +1,11 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import { fetchQueryAlbum } from '../api/fetcher'
+import { Link } from 'react-router-dom'
 
 const Albums = () => {
-
- const albums = useSelector(state => state.Albums.data)
+ const dispatch = useDispatch()
+ const albums = useSelector(state => state.Modules.data)
 
 console.log(albums)
 
@@ -13,10 +15,10 @@ console.log(albums)
       <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-2 w-full'>
       {albums ? albums.data.albums.map((a) => {
         return(
-          <span className='flex flex-col justify-center items-center'>
+          <Link to='/albumDetails' onClick={() => dispatch(fetchQueryAlbum(a.url))} className='flex flex-col justify-center items-center'>
             <img className='h-[200px]' src={a.image[2].link} alt={a.name} />
             {a.name}
-          </span>
+          </Link>
         )
       }) : 'Nothing to show' }
       </div>
