@@ -1,8 +1,8 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
 // Create an async thunk to fetch data from an API endpoint
-export const fetchSongs = createAsyncThunk('extra/fetchSongs', async (link) => {
-  const response = await fetch(`https://saavn.me/songs?link=${link}`);
+export const fetchSongQuery = createAsyncThunk('extra/fetchSongQuery', async (query) => {
+  const response = await fetch(`https://saavn.me/search/all?query=${query}`);
   const data = await response.json();
   return data;
 });
@@ -10,27 +10,27 @@ export const fetchSongs = createAsyncThunk('extra/fetchSongs', async (link) => {
 
 
 // Define the extra reducer with an initial state
-const SongDetailSlice = createSlice({
-  name: 'SongDetailSlice',
+const searchSlice = createSlice({
+  name: 'searchSlice',
   initialState: { data: null, isLoading: false, error: null },
   reducers: {},
   extraReducers: (builder) => {
     // Handle the pending state of the async thunk
-    builder.addCase(fetchSongs.pending, (state) => {
+    builder.addCase(fetchSongQuery.pending, (state) => {
       state.isLoading = true;
       state.error = null;
     });
     // Handle the fulfilled state of the async thunk
-    builder.addCase(fetchSongs.fulfilled, (state, action) => {
+    builder.addCase(fetchSongQuery.fulfilled, (state, action) => {
       state.isLoading = false;
       state.data = action.payload;
     });
     // Handle the rejected state of the async thunk
-    builder.addCase(fetchSongs.rejected, (state, action) => {
+    builder.addCase(fetchSongQuery.rejected, (state, action) => {
       state.isLoading = false;
       state.error = action.error.message;
     });
   },
 });
 
-export default SongDetailSlice.reducer;
+export default searchSlice.reducer;

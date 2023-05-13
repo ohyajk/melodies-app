@@ -15,10 +15,6 @@
   --secondary: #25a56a;
 }
 
-.mainbox {
-  min-height: calc(100vh - 32px);
-}
-
 input[type="text"]{
   background-color: #121212;
 }
@@ -44,4 +40,11 @@ input[type="text"]{
 *::-webkit-scrollbar-thumb {
   background-color: var(--secondary);
   border: 3px solid var(--primary);
+}
+
+@media screen and (min-width: 768px) {
+  .gridd {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+  }
 }

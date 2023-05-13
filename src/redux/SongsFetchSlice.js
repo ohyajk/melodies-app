@@ -1,8 +1,8 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
 // Create an async thunk to fetch data from an API endpoint
-export const fetchSongs = createAsyncThunk('extra/fetchSongs', async (link) => {
-  const response = await fetch(`https://saavn.me/songs?link=${link}`);
+export const fetchSongs = createAsyncThunk('extra/fetchSongs', async () => {
+  const response = await fetch('https://saavn.me/playlists?id=1070105513');
   const data = await response.json();
   return data;
 });
@@ -10,8 +10,8 @@ export const fetchSongs = createAsyncThunk('extra/fetchSongs', async (link) => {
 
 
 // Define the extra reducer with an initial state
-const SongDetailSlice = createSlice({
-  name: 'SongDetailSlice',
+const SongsFetchSlice = createSlice({
+  name: 'SongsFetchSlice',
   initialState: { data: null, isLoading: false, error: null },
   reducers: {},
   extraReducers: (builder) => {
@@ -33,4 +33,4 @@ const SongDetailSlice = createSlice({
   },
 });
 
-export default SongDetailSlice.reducer;
+export default SongsFetchSlice.reducer;

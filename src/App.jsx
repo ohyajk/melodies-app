@@ -5,21 +5,39 @@ import Songs from "./pages/Songs"
 import Albums from "./pages/Albums"
 import Playlists from "./pages/Playlists"
 import SongDetail from "./pages/SongDetail"
-import Mobnav from "./components/Mobnav"
+import Player from "./components/Player"
+import { fetchSongs } from "./redux/SongsFetchSlice"
+import { useEffect } from "react"
+import { useDispatch } from "react-redux"
+import { fetchAlbums } from "./redux/AlbumsFetchSlice"
+import Sidebar from "./components/Sidebar"
+import Search from "./pages/Search"
 
 function App() {
 
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(fetchSongs())
+    dispatch(fetchAlbums())
+  },[])
+
   return (
-    <main className="mainbox box-border md:flex items-start justify-start m-4 bg-[#16151a] rounded-3xl " >
+    <main className=" box-border bg-bgbg" >
       <Navbar/>
-      <Mobnav/>
+      <div className="gridd min-h-screen">
+        <Sidebar/>
+        <div></div>
       <Routes>
         <Route path="/" element={<Home/>} />
-        <Route path="/songs" element={<Songs/>} />
-        <Route path="/albums" element={<Albums/>} />
-        <Route path="/playlists" element={<Playlists/>} />
-        <Route path="/songdetails" element={<SongDetail/>} />
+        <Route path="songs" element={<Songs/>} />
+        <Route path="albums" element={<Albums/>} />
+        <Route path="playlists" element={<Playlists/>} />
+        <Route path="songdetails" element={<SongDetail/>} />
+        <Route path="search" element={<Search/>} />
       </Routes>
+      <Player/>
+      </div>
     </main>
   )
 }
