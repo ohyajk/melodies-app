@@ -1,7 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit'
 import SongDetailSlice from './SongDetailSlice'
 import SongsFetchSlice from './SongsFetchSlice'
-import ModulesFetchSlice from './ModulesFetchSlice'
+import ModulesFetchSlice from './modulesFetchSlice'
 import PlayerSlice from './PlayerSlice'
 import searchSlice from './SearchSlice'
 import albumDetailSlice from './albumDetailSlice'
