@@ -48,3 +48,10 @@ input[type="text"]{
     grid-template-columns: 280px 1fr;
   }
 }
+@media screen and (max-width: 768px) {
+  .gridd2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}

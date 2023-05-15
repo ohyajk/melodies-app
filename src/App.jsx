@@ -12,7 +12,7 @@ import Search from "./pages/Search"
 import { fetchModules, fetchSongsPage } from "./api/fetcher"
 import AlbumDetail from "./pages/AlbumDetail"
 import SongDetail from "./pages/SongDetail"
-
+import PlaylistDetail from "./pages/PlaylistDetail"
 function App() {
 
   const dispatch = useDispatch()
@@ -35,6 +35,7 @@ function App() {
         <Route path="playlists" element={<Playlists/>} />
         <Route path="songDetails" element={<SongDetail/>} />
         <Route path="albumDetails" element={<AlbumDetail/>} />
+        <Route path="playlistDetails" element={<PlaylistDetail/>} />
         <Route path="search" element={<Search/>} />
       </Routes>
       <Player/>

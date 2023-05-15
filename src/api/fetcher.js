@@ -21,6 +21,13 @@ export const fetchQueryAlbum = createAsyncThunk('extra/fetchQueryAlbum', async (
     return data;
 });
 
+// Fetch query Playlist Data
+export const fetchQueryPlaylist = createAsyncThunk('extra/fetchQueryPlaylist', async (playlistId) => {
+    const response = await fetch(`https://saavn.me/playlists?id=${playlistId}`);
+    const data = await response.json();
+    return data;
+});
+
 // Fetch Songs Page Data
 export const fetchSongsPage = createAsyncThunk('extra/fetchSongsPage', async () => {
     const response = await fetch('https://saavn.me/playlists?id=1070105513');

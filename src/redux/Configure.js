@@ -5,8 +5,10 @@ import ModulesFetchSlice from './modulesFetchSlice'
 import PlayerSlice from './PlayerSlice'
 import searchSlice from './SearchSlice'
 import albumDetailSlice from './albumDetailSlice'
+import PlaylistDetailSlice from './PlaylistDetailSlice'
 
 const store = configureStore({ reducer: {
+    PlaylistDetail : PlaylistDetailSlice,
     AlbumDetail : albumDetailSlice,
     SongDetail : SongDetailSlice,
     Songs : SongsFetchSlice,

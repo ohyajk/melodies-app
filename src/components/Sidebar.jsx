@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom'
 
 const Sidebar = () => {
   return (
-    <div className='fixed flex flex-col justify-start'>
+    <div className='hidden fixed md:flex flex-col justify-start'>
         <ul className="flex flex-col justify-start items-start text-left pl-8 pt-24 text-lg gap-5">
             <NavLink to='/' className={({isActive}) => isActive ? "flex justify-start items-center gap-4 text-myGreen cursor-pointer" : "flex justify-start items-center gap-4 hover:text-myGreen cursor-pointer"}><i className="fa-solid fa-house fa-lg "></i><span>Home</span></NavLink>
             <NavLink to='/songs' className={({isActive}) => isActive ? "flex justify-start items-center gap-4 text-myGreen cursor-pointer" : "flex justify-start items-center gap-4 hover:text-myGreen cursor-pointer"}><i className="fa-solid fa-music fa-lg "></i><span>Songs</span></NavLink>

@@ -1,8 +1,10 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
-
+import { useDispatch, useSelector } from 'react-redux'
+import {fetchQueryPlaylist} from '../api/fetcher'
+import { Link } from 'react-router-dom'
 const Playlists = () => {
 
+  const dispatch = useDispatch()
   const playlists = useSelector(state => state.Modules.data)
 
 
@@ -12,10 +14,10 @@ const Playlists = () => {
       <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-2 w-full'>
       {playlists ? playlists.data.playlists.map((p) => {
         return(
-          <span className='flex flex-col justify-center items-center'>
+          <Link to='/playlistDetails' onClick={() => dispatch(fetchQueryPlaylist(p.id))} className='flex flex-col justify-center items-center'>
             <img className='h-[200px]' src={p.image[2].link} alt={p.name} />
             {p.title}
-          </span>
+          </Link>
         )
       }) : 'Nothing to show' }
       </div>
