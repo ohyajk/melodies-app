@@ -9,7 +9,7 @@ import { useEffect } from "react"
 import { useDispatch } from "react-redux"
 import Sidebar from "./components/Sidebar"
 import Search from "./pages/Search"
-import { fetchModules, fetchSongsPage } from "./api/fetcher"
+import { fetchModules, fetchSongsPage, fetchHomePage } from "./api/fetcher"
 import AlbumDetail from "./pages/AlbumDetail"
 import SongDetail from "./pages/SongDetail"
 import PlaylistDetail from "./pages/PlaylistDetail"
@@ -20,6 +20,7 @@ function App() {
   useEffect(() => {
     dispatch(fetchSongsPage())
     dispatch(fetchModules())
+    dispatch(fetchHomePage())
   },[])
 
   return (

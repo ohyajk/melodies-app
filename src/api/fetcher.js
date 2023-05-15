@@ -35,6 +35,13 @@ export const fetchSongsPage = createAsyncThunk('extra/fetchSongsPage', async () 
     return data;
 });
 
+// Fetch Home Page Data
+export const fetchHomePage = createAsyncThunk('extra/fetchHomePage', async () => {
+    const response = await fetch('https://saavn.me/playlists?id=1053900960');
+    const data = await response.json();
+    return data;
+});
+
 // Fetch Punjabi Modules Page Data : Album & Playlists
 export const fetchModules = createAsyncThunk('extra/fetchModules', async () => {
     const response = await fetch('https://saavn.me/modules?language=punjabi');
